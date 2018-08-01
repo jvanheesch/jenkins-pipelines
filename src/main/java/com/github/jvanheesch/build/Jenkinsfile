@@ -1,7 +1,7 @@
 #!groovy​
 package com.github.jvanheesch.build
 
-@Library('site-jenkins-shared-library')
+@Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
 
 def pom
