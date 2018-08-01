@@ -32,3 +32,14 @@ pipelineJob('Generated-Site-Multimodule') {
         }
     }
 }
+
+pipelineJob('Generated-Site-Child') {
+    definition {
+        cpsScm {
+            scm {
+                git('https://github.com/jvanheesch/jenkins-pipelines.git')
+            }
+            scriptPath("src/main/java/com/github/jvanheesch/site-child-pom/Jenkinsfile")
+        }
+    }
+}
