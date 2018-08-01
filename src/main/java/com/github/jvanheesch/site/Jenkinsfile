@@ -42,7 +42,7 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Site'
-                        sh 'mvn site:site site:stage'
+                        sh 'mvn -X site:site site:stage'
                     }
                 }
             }
