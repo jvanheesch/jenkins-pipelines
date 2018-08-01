@@ -6,7 +6,7 @@ pipelineJob('Generated') {
             scm {
                 git('https://github.com/jvanheesch/jenkins-pipelines.git')
             }
-            scriptPath("src/com/github/jvanheesch/build/Jenkinsfile")
+            scriptPath("src/main/java/com/github/jvanheesch/build/Jenkinsfile")
         }
     }
 }
