@@ -1,0 +1,48 @@
+#!groovy​
+package com.github.jvanheesch.build
+
+@Library('site-jenkins-shared-library')
+import static com.github.jvanheesch.shared.HelperGroovy.*
+
+def pom
+
+pipeline {
+    agent {
+        label 'master'
+    }
+
+    options {
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                timestamps {
+                    script {
+                        echo 'Checkout'
+                        checkoutFromGithub(this, 'site-parent-pom', 'master')
+                        pom = this.readMavenPom()
+                    }
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                timestamps {
+                    script {
+                        echo 'Build'
+                        sh 'mvn clean install -U -DskipTests=true'
+                    }
+                }
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                echo "FAILURE"
+            }
+        }
+    }
+}
