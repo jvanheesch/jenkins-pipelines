@@ -3,6 +3,7 @@ package com.github.jvanheesch.sitedeploy
 
 @Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
+import static com.github.jvanheesch.sitedeploy.Config.artifactId
 
 def pom
 
@@ -24,7 +25,7 @@ pipeline {
             steps {
                 timestamps {
                     script {
-                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', artifactId + "${params.TAG_VERSION}")
                         pom = this.readMavenPom()
                     }
                 }
