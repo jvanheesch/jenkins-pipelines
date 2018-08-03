@@ -33,8 +33,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 timestamps {
-                    script {
-                        mvn(this, "clean deploy -DskipTests=true")
+                        script {
+                            sh 'mvn clean deploy -U -DskipTests=true'
                     }
                 }
             }
