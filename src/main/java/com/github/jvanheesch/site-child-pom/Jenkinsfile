@@ -1,5 +1,5 @@
 #!groovy​
-package main.java.com.github.jvanheesch.site
+package com.github.jvanheesch.site
 
 @Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
