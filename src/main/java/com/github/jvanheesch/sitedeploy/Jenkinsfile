@@ -3,7 +3,6 @@ package com.github.jvanheesch.sitedeploy
 
 @Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
-import static com.github.jvanheesch.sitedeploy.Config.artifactId
 
 def pom
 
