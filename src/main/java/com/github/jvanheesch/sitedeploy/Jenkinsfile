@@ -30,12 +30,11 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Deploy') {
             steps {
                 timestamps {
                     script {
-                        echo 'Build'
-                        sh 'mvn clean install -U -DskipTests=true'
+                        mvn(this, "clean deploy -DskipTests=true")
                     }
                 }
             }
