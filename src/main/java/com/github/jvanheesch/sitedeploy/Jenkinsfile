@@ -23,7 +23,7 @@ pipeline {
         // https://issues.jenkins-ci.org/browse/JENKINS-37050?focusedCommentId=336512&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-336512
         stage('Checkout') {
             steps {
-                checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:jvanheesch/site-parent-pom.git' ]], branches: [[name: 'refs/tags/site-parent-pom-1.1']]], poll: false
+                checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:jvanheesch/site-parent-pom.git' ]], branches: [[name: 'refs/tags/site-parent-pom-1.1']]]
             }
         }
 //        stage('Checkout') {
