@@ -28,7 +28,7 @@ pipelineJob('Generated-Site-Shit') {
             scm {
                 git('https://github.com/jvanheesch/jenkins-pipelines.git')
             }
-            scriptPath("src/main/java/com/github/jvanheesch/site-deploy/Jenkinsfile")
+            scriptPath("src/main/java/com/github/jvanheesch/sitedeploy/Jenkinsfile")
         }
     }
 }
@@ -39,7 +39,7 @@ pipelineJob('Generated-Site-Multimodule') {
             scm {
                 git('https://github.com/jvanheesch/jenkins-pipelines.git')
             }
-            scriptPath("src/main/java/com/github/jvanheesch/site-multimodule/Jenkinsfile")
+            scriptPath("src/main/java/com/github/jvanheesch/sitemultimodule/Jenkinsfile")
         }
     }
 }
@@ -50,7 +50,7 @@ pipelineJob('Generated-Site-Child') {
             scm {
                 git('https://github.com/jvanheesch/jenkins-pipelines.git')
             }
-            scriptPath("src/main/java/com/github/jvanheesch/site-child-pom/Jenkinsfile")
+            scriptPath("src/main/java/com/github/jvanheesch/sitechildpom/Jenkinsfile")
         }
     }
 }

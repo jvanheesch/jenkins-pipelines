@@ -1,5 +1,5 @@
 #!groovy​
-package com.github.jvanheesch.site
+package com.github.jvanheesch.sitemultimodule
 
 @Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
@@ -21,7 +21,7 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Checkout'
-                        checkoutFromGithub(this, 'site-child-pom', 'master')
+                        checkoutFromGithub(this, 'site-multimodule', 'master')
                         pom = this.readMavenPom()
                     }
                 }

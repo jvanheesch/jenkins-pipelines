@@ -1,5 +1,5 @@
 #!groovy​
-package com.github.jvanheesch.site
+package com.github.jvanheesch.sitedeploy
 
 @Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
@@ -15,13 +15,16 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    parameters {
+        string(description: 'Version', name: 'TAG_VERSION')
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 timestamps {
                     script {
-                        echo 'Checkout'
-                        checkoutFromGithub(this, 'site-multimodule', 'master')
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', master, "site-parent-pom-${params.TAG_VERSION}")
                         pom = this.readMavenPom()
                     }
                 }
@@ -37,28 +40,11 @@ pipeline {
                 }
             }
         }
-        stage('Site') {
-            steps {
-                timestamps {
-                    script {
-                        echo 'Site'
-                        sh 'mvn -X site:site site:stage'
-                    }
-                }
-            }
-        }
-        stage('Archive') {
-            steps {
-                timestamps {
-                    archiveArtifacts artifacts: 'target/staging/**', caseSensitive: true, defaultExcludes: true
-                }
-            }
-        }
     }
     post {
         failure {
             script {
-                echo "FAILURE"
+                notifyFailedBuildSlack(this, currentBuild, pom, "java")
             }
         }
     }
