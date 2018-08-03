@@ -27,21 +27,12 @@ pipeline {
                 }
             }
         }
-//        stage('Build') {
-//            steps {
-//                timestamps {
-//                    script {
-//                        echo 'Build'
-//                        sh 'mvn clean install -U -DskipTests=true'
-//                    }
-//                }
-//            }
-//        }
-        stage('Deploy') {
+        stage('Build') {
             steps {
                 timestamps {
                     script {
-                        mvn(this, "clean deploy -DskipTests=true")
+                        echo 'Build'
+                        sh 'mvn clean install -U -DskipTests=true'
                     }
                 }
             }
