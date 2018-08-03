@@ -44,7 +44,7 @@ pipeline {
     post {
         failure {
             script {
-                notifyFailedBuildSlack(this, currentBuild, pom, "java")
+                echo 'Failure'
             }
         }
     }
