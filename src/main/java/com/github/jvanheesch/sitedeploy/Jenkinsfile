@@ -26,7 +26,7 @@ pipeline {
                     script {
                         def s = artifactId + "-${params.TAG_VERSION}"
                         echo s
-                        checkoutFromGithubWithTag(this, 'site-parent-pom', s)
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', artifactId + "-${params.TAG_VERSION}")
                         pom = this.readMavenPom()
                     }
                 }
