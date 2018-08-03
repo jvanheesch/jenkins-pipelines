@@ -2,7 +2,7 @@
 package com.github.jvanheesch.sitedeploy
 
 @Library('jenkins-shared-library')
-import java.lang.Object
+import static com.github.jvanheesch.shared.HelperGroovy.*
 
 def pom
 
