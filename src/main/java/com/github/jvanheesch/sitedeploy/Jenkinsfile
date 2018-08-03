@@ -41,6 +41,15 @@ pipeline {
         }
     }
     post {
+        always {
+            script {
+                echo "version stuff"
+                echo "${pom.version}"
+                echo "${pom.version.replaceAll("-SNAPSHOT", "")}"
+                echo pom.version
+                echo "probs not visible"
+            }
+        }
         failure {
             script {
                 echo "FAILURE"
