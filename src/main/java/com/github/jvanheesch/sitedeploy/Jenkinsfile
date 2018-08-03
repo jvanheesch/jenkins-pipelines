@@ -27,7 +27,7 @@ pipeline {
                         echo 'Checkout'
                         echo "param: ${params.TAG_VERSION}"
                         echo "<checkoutFromGithubWithTag>"
-                        checkoutFromGithubWithTag(this, 'site-parent-pom', "${params.TAG_VERSION}")
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
                         echo "</checkoutFromGithubWithTag>"
 //                        checkoutFromGithub(this, 'site-parent-pom', 'master')
                         echo "<readMavenPom>"
