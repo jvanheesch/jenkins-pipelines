@@ -1,0 +1,54 @@
+#!groovy​
+package main.java.com.github.jvanheesch.site
+
+@Library('jenkins-shared-library')
+import java.lang.Object
+
+@Library('jenkins-shared-library')
+import static com.github.jvanheesch.shared.HelperGroovy.*
+
+def pom
+
+pipeline {
+    agent {
+        label 'master'
+    }
+
+    options {
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        string(description: 'Version', name: 'TAG_VERSION')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                timestamps {
+                    script {
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
+                        pom = this.readMavenPom()
+                    }
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                timestamps {
+                    script {
+                        echo 'Build'
+                        sh 'mvn clean install -U -DskipTests=true'
+                    }
+                }
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                notifyFailedBuildSlack(this, currentBuild, pom, "java")
+            }
+        }
+    }
+}
