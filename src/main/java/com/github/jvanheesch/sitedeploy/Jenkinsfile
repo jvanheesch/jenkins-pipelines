@@ -44,10 +44,8 @@ pipeline {
         always {
             script {
                 echo "version stuff"
-                echo "${pom.version}"
-                echo "${pom.version.replaceAll("-SNAPSHOT", "")}"
-                echo pom.version
-                echo "probs not visible"
+                echo "${pom.groupId}:${pom.artifactId}:${pom.packaging}:${pom.version}"
+                echo "${pom.classifier}"
             }
         }
         failure {
