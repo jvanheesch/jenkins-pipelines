@@ -15,6 +15,10 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    parameters {
+        string(description: 'Version', name: 'TAG_VERSION')
+    }
+
     stages {
         stage('Checkout') {
             steps {
