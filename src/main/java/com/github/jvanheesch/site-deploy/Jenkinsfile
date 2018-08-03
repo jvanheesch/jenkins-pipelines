@@ -24,7 +24,7 @@ pipeline {
             steps {
                 timestamps {
                     script {
-                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', master, "site-parent-pom-${params.TAG_VERSION}")
                         pom = this.readMavenPom()
                     }
                 }
