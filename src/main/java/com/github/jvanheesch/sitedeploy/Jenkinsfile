@@ -21,28 +21,28 @@ pipeline {
 
     stages {
         // https://issues.jenkins-ci.org/browse/JENKINS-37050?focusedCommentId=336512&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-336512
-        stage('Checkout') {
-            steps {
-                checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:jvanheesch/site-parent-pom.git' ]], branches: [[name: 'refs/tags/site-parent-pom-1.1']]]
-            }
-        }
 //        stage('Checkout') {
 //            steps {
-//                timestamps {
-//                    script {
-//                        echo 'Checkout'
-//                        echo "param: ${params.TAG_VERSION}"
-//                        echo "<checkoutFromGithubWithTag>"
-//                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
-//                        echo "</checkoutFromGithubWithTag>"
-////                        checkoutFromGithub(this, 'site-parent-pom', 'master')
-//                        echo "<readMavenPom>"
-//                        pom = this.readMavenPom()
-//                        echo "</readMavenPom>"
-//                    }
-//                }
+//                checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:jvanheesch/site-parent-pom.git' ]], branches: [[name: 'refs/tags/site-parent-pom-1.1']]]
 //            }
 //        }
+        stage('Checkout') {
+            steps {
+                timestamps {
+                    script {
+                        echo 'Checkout'
+                        echo "param: ${params.TAG_VERSION}"
+                        echo "<checkoutFromGithubWithTag>"
+                        checkoutFromGithubWithTag(this, 'site-parent-pom', "site-parent-pom-${params.TAG_VERSION}")
+                        echo "</checkoutFromGithubWithTag>"
+//                        checkoutFromGithub(this, 'site-parent-pom', 'master')
+                        echo "<readMavenPom>"
+                        pom = this.readMavenPom()
+                        echo "</readMavenPom>"
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
                 timestamps {
