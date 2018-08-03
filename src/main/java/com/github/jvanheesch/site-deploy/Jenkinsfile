@@ -2,9 +2,6 @@
 package main.java.com.github.jvanheesch.site
 
 @Library('jenkins-shared-library')
-import java.lang.Object
-
-@Library('jenkins-shared-library')
 import static com.github.jvanheesch.shared.HelperGroovy.*
 
 def pom
