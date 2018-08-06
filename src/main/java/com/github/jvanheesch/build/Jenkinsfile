@@ -32,7 +32,9 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Build'
-                        sh 'mvn clean install -U -DskipTests=true'
+                        sh "clean install site:site site:stage " +
+                                "-Dapplication.config=${""} " +
+                                "-DskipTests=true"
                     }
                 }
             }
