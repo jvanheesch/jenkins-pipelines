@@ -35,6 +35,7 @@ pipeline {
             steps {
                 timestamps {
                     script {
+                        sh 'mvn -version'
                         echo 'Build'
                         sh 'mvn clean install -U -DskipTests=true'
                     }
