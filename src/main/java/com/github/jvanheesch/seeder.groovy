@@ -28,7 +28,7 @@ pipelineJob('Generated-Build-Child') {
             scm {
                 git('https://github.com/jvanheesch/jenkins-pipelines.git')
             }
-            scriptPath("src/main/java/com/github/jvanheesch/build/Jenkinsfile")
+            scriptPath("src/main/java/com/github/jvanheesch/sitechildpom/build/Jenkinsfile")
         }
     }
 }
