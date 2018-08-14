@@ -15,6 +15,10 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    tools {
+        maven 'jenkins-maven-installation-3.5.4'
+    }
+
     stages {
         stage('Checkout') {
             steps {
