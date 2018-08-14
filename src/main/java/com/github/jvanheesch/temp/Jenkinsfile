@@ -15,8 +15,7 @@ pipeline {
     }
 
     tools {
-        maven 'Maven 3.5.4'
-        jdk 'jdk8'
+        maven 'jenkins-maven-installation-3.5.4'
     }
 
     stages {
