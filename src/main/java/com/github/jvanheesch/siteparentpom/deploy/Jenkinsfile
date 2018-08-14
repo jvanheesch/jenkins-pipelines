@@ -21,7 +21,7 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Checkout'
-                        checkoutFromGithub(this, 'site-child-pom', 'master')
+                        checkoutFromGithub(this, 'site-parent-pom', 'master')
                         pom = this.readMavenPom()
                     }
                 }
