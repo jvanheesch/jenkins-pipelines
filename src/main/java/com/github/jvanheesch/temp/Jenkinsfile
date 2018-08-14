@@ -1,0 +1,35 @@
+#!groovy​
+package com.github.jvanheesch.temp
+
+@Library('jenkins-shared-library')
+
+def pom
+
+pipeline {
+    agent {
+        label 'master'
+    }
+
+    options {
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Maven Testing') {
+            steps {
+                timestamps {
+                    script {
+                        sh 'mvn -version'
+                    }
+                }
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                echo "FAILURE"
+            }
+        }
+    }
+}

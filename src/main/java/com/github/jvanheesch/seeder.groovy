@@ -1,5 +1,16 @@
 package com.github.jvanheesch
 
+pipelineJob('Temp-maven-testing') {
+    definition {
+        cpsScm {
+            scm {
+                git('https://github.com/jvanheesch/jenkins-pipelines.git')
+            }
+            scriptPath("src/main/java/com/github/jvanheesch/temp/Jenkinsfile")
+        }
+    }
+}
+
 pipelineJob('Deploy-Site-Parent-Pom') {
     definition {
         cpsScm {
