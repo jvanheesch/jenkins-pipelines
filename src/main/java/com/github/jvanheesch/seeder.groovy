@@ -1,5 +1,16 @@
 package com.github.jvanheesch
 
+pipelineJob('Deploy-Site-Parent-Pom') {
+    definition {
+        cpsScm {
+            scm {
+                git('https://github.com/jvanheesch/jenkins-pipelines.git')
+            }
+            scriptPath("src/main/java/com/github/jvanheesch/siteparentpom/deploy/Jenkinsfile")
+        }
+    }
+}
+
 pipelineJob('Generated-Build') {
     definition {
         cpsScm {
