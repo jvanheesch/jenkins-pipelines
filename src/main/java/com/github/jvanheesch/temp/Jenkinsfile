@@ -14,7 +14,21 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    tools {
+        maven 'Maven 3.5.4'
+        jdk 'jdk8'
+    }
+
     stages {
+//        https://jenkins.io/blog/2017/02/07/declarative-maven-project/
+        stage('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
         stage('Maven Testing') {
             steps {
                 timestamps {
