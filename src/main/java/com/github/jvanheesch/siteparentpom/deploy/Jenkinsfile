@@ -15,6 +15,10 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    tools {
+        maven 'jenkins-maven-installation-3.5.4'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -32,7 +36,11 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Build'
-                        sh 'mvn clean deploy -U -DskipTests=true'
+                        sh 'mvn -version'
+                        // https://stackoverflow.com/a/50756301/1939921
+                        configFileProvider([configFile(fileId: 'jenkins-maven-settings', variable: 'MAVEN_SETTINGS_XML')]) {
+                            sh 'mvn clean deploy -U -X -DskipTests=true -s $MAVEN_SETTINGS_XML'
+                        }
                     }
                 }
             }
