@@ -32,6 +32,7 @@ pipeline {
                 timestamps {
                     script {
                         echo 'Build'
+                        sh 'mvn -version'
                         sh 'mvn clean install -U -DskipTests=true'
                     }
                 }
