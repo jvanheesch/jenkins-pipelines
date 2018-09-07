@@ -1,5 +1,16 @@
 package com.github.jvanheesch
 
+pipelineJob('Test branches') {
+    definition {
+        cpsScm {
+            scm {
+                git('https://github.com/jvanheesch/jenkins-pipelines.git')
+            }
+            scriptPath("src/main/java/com/github/jvanheesch/branchestest/Jenkinsfile")
+        }
+    }
+}
+
 pipelineJob('Temp-maven-testing') {
     definition {
         cpsScm {
