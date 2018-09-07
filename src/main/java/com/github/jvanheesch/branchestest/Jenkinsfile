@@ -1,7 +1,6 @@
 #!groovy​
 package com.github.jvanheesch.branchestest
 
-@Library('jenkins-shared-library')
 import static com.github.jvanheesch.branchestest.TestConstants.scmGroupName
 
 def pom
