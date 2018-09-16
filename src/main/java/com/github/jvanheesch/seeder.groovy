@@ -29,6 +29,7 @@ pipelineJob('Test branches') {
     }
 }
 
+// TODO_JORIS: discard old builds!
 pipelineJob('Temp-maven-testing') {
     definition {
         cpsScm {
