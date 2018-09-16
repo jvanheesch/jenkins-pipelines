@@ -1,5 +1,23 @@
 package com.github.jvanheesch
 
+multibranchPipelineJob('Example multibranch util') {
+    branchSources {
+        git {
+            remote('https://github.com/jvanheesch/util.git')
+        }
+    }
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(20)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('jenkins/build/Jenkinsfile')
+        }
+    }
+}
+
 pipelineJob('Test branches') {
     definition {
         cpsScm {
