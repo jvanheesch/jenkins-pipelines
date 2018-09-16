@@ -1,5 +1,6 @@
 package com.github.jvanheesch
 
+// TODO_JORIS: discard old builds for individual pipelines!
 multibranchPipelineJob('Example multibranch util') {
     branchSources {
         git {
